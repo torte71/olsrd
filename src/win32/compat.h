@@ -51,8 +51,11 @@
 #define COMPAT_H_
 
 #include <sys/time.h>
+#include <unistd.h> /* timespec */
 
+/* What is/was that good for? It stops with an error.
 #define inet_ntop(af, src, dst, size) inet_ntop(af, (void *)(src), dst, size)
+*/
 
 # define timeradd(a, b, result)                 \
   do {                        \
@@ -74,6 +77,9 @@
     }                       \
   } while (0)
 
+
+#define CLOCK_MONOTONIC 1
+int clock_gettime(int X, struct timespec *ts);
 
 int getpid(void);
 

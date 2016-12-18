@@ -56,6 +56,8 @@
 #include "http_headers.h"
 
 #ifdef _WIN32
+#undef EWOULDBLOCK
+#define EWOULDBLOCK WSAEWOULDBLOCK
 #define close(x) closesocket(x)
 #endif /* _WIN32 */
 

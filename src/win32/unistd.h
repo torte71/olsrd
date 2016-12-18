@@ -48,6 +48,12 @@
 #if !defined TL_UNISTD_H_INCLUDED
 
 #include <stddef.h>
+/* one should not include "parts/time.h" - it would be nicer to remove this unistd.h completely and use recent MinGW instead */
+#if defined(MINGW_VERSION) && MINGW_VERSION >= 40801
+#define _FAKE_TIME_H_SOURCED	1
+#define __need_struct_timespec	1
+#include <parts/time.h>
+#endif
 
 #define TL_UNISTD_H_INCLUDED
 

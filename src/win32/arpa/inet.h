@@ -54,13 +54,15 @@
 #include <ws2tcpip.h>
 #undef interface
 
+/* MINGW_VERSION==40801 does not have those prototypes. Why are they only included for VERSION < 40600?
 #if !defined(MINGW_VERSION) || MINGW_VERSION < 40600
+*/
 #ifndef InetNtopA
 int inet_aton(const char *cp, struct in_addr *addr);
 int inet_pton(int af, const char *src, void *dst);
 char *inet_ntop(int af, const void *src, char *dst, int size);
 #endif /* InetNtopA */
-#endif /* !defined(MINGW_VERSION) || MINGW_VERSION < 40600 */
+//see above//#endif /* !defined(MINGW_VERSION) || MINGW_VERSION < 40600 */
 
 #endif /* !defined TL_ARPA_INET_H_INCLUDED */
 
