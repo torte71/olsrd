@@ -49,9 +49,10 @@ TOPDIR = ../..
 include $(TOPDIR)/Makefile.inc
 
 ifeq ($(OS),win32)
-default_target install clean:
-	@echo "**** We use the regex library here. Does Win32 has something like this?"
-else
+# WIN32: Extract MinGW-regex files into C:\MinGW\ before compiling
+# https://sourceforge.net/projects/mingw/files/Other/UserContributed/regex/mingw-regex-2.5.1/mingw-libgnurx-2.5.1-dev.tar.gz
+LIBS += -lregex
+endif
 ifeq ($(OS),android)
 # On Android Google forgot to include regex engine code for Froyo version (but also there was
 # no support in older versions for it) so we have here this missing code.
@@ -77,4 +78,3 @@ uninstall:
 
 clean:		$(REGEX_CLEAN)
 		rm -f $(OBJS) $(SRCS:%.c=%.d) $(PLUGIN_FULLNAME)
-endif

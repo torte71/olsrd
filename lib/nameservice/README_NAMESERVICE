@@ -189,6 +189,12 @@ WINDOWS:
 	and configure the plugin with
         PlParam "hosts-file" "C:\WINDOWS\system32\drivers\etc\hosts"
 
+* compiling
+	Extract MinGW-regex files (from dev) into C:\MinGW\ before compiling
+	Put "libgnurx-0.dll" (from bin) to the plugin directory
+	https://sourceforge.net/projects/mingw/files/Other/UserContributed/regex/mingw-regex-2.5.1/mingw-libgnurx-2.5.1-dev.tar.gz
+	https://sourceforge.net/projects/mingw/files/Other/UserContributed/regex/mingw-regex-2.5.1/mingw-libgnurx-2.5.1-bin.tar.gz
+
 ---------------------------------------------------------------------
 TODO
 ---------------------------------------------------------------------
