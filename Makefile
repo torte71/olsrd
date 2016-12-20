@@ -84,6 +84,11 @@ ifeq ($(OS),android)
 CFLAGS += -D__POSIX_VISIBLE
 ANDROIDREGEX=$(REGEX_LIB)
 endif
+ifeq ($(OS),win32)
+# Win32 lacks regex as well
+CFLAGS += -D__POSIX_VISIBLE
+ANDROIDREGEX=$(REGEX_LIB)
+endif
 
 $(EXENAME):	$(OBJS) $(ANDROIDREGEX) src/builddata.o
 ifeq ($(VERBOSE),0)
