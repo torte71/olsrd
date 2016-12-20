@@ -232,7 +232,7 @@ ifeq ($(OS),linux)
 SUBDIRS := arprefresh bmf dot_draw dyn_gw dyn_gw_plain httpinfo info jsoninfo mdns mini nameservice netjson p2pd pgraph pud quagga secure sgwdynspeed txtinfo watchdog
 else
 ifeq ($(OS),win32)
-SUBDIRS := dot_draw httpinfo info jsoninfo mini netjson pgraph secure txtinfo
+SUBDIRS := dot_draw httpinfo info jsoninfo mini nameservice netjson pgraph secure txtinfo
 else
 ifeq ($(OS),android)
 SUBDIRS := arprefresh bmf dot_draw dyn_gw dyn_gw_plain httpinfo info jsoninfo mdns mini nameservice netjson p2pd pgraph secure sgwdynspeed txtinfo watchdog
