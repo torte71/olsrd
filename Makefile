@@ -72,6 +72,14 @@ ifeq ($(OS),android)
   SGW_SUPPORT = 1
 endif
 
+GUIGTK_SUPPORT = 0
+ifeq ($(OS),linux)
+  GUIGTK_SUPPORT = 1
+endif
+ifeq ($(OS),win32)
+  GUIGTK_SUPPORT = 1
+endif
+
 
 .PHONY: default_target switch
 default_target: $(EXENAME)
@@ -123,7 +131,7 @@ clean:
 	-rm -fr gui/win32/Shim/Release
 
 gui:
-ifeq ($(OS),linux)
+ifeq ($(GUIGTK_SUPPORT),1)
 	$(MAKECMDPREFIX)$(MAKECMD) -C gui/linux-gtk all
 else
 	@echo "target gui not supported on $(OS)"

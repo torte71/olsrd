@@ -44,11 +44,21 @@
 TOPDIR ?= ../..
 include $(TOPDIR)/Makefile.inc
 
+ifeq ($(OS),win32)
+  OBJS += $(TOPDIR)/src/win32/compat.o
+  # -fPIE/-pie executables do not start on win32
+  CFLAGSPIE =
+  LDFLAGSPIE =
+else
+  CFLAGSPIE = -fPIE
+  LDFLAGSPIE = -pie
+endif
+
 # hardening flags: -fPIE -Wl,-z,now -pie
-CFLAGS += $(shell pkg-config --cflags gtk+-2.0) -fPIE -Wno-strict-prototypes \
+CFLAGS += $(shell pkg-config --cflags gtk+-2.0) $(CFLAGSPIE) -Wno-strict-prototypes \
           -Wno-cast-qual
 CPPFLAGS += $(shell pkg-config --cflags gtk+-2.0)
-LDFLAGS += -pie
+LDFLAGS += $(LDFLAGSPIE)
 #LDFLAGS +=	-Wl,--warn-common
 
 
@@ -78,7 +88,7 @@ endif
 .PHONY: clean install
 
 clean:
-	rm -f $(OBJS) olsrd-gui
+	rm -f $(OBJS) $(SRCS:%.c=%.d) olsrd-gui
 
 install:
 	mkdir -p "$(DESTDIR)/usr/bin"

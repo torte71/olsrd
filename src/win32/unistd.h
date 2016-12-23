@@ -63,6 +63,13 @@ char *StrError(unsigned int ErrNo);
 
 int isatty(int fd);
 
+/* POSIX would expect these in <sys/socket.h>, but MinGW has them in unistd.h */
+#ifndef SHUT_RDWR
+#define SHUT_RD   0x00
+#define SHUT_WR   0x01
+#define SHUT_RDWR 0x02
+#endif
+
 #endif /* !defined TL_UNISTD_H_INCLUDED */
 
 #endif /* _WIN32 */

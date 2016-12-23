@@ -46,6 +46,9 @@
 #include "common.h"
 #include "nodes.h"
 #include <math.h>
+#ifdef _WIN32
+#include "compat.h"
+#endif
 
 void
 init_nodes(void)

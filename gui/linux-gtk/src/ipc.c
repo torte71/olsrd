@@ -55,6 +55,7 @@
 #undef strerror
 #define strerror(x) StrError(x)
 #define perror(x) WinSockPError(x)
+void WinSockPError(const char *Str);
 #endif /* _WIN32 */
 
 int ipc_socket = 0;
